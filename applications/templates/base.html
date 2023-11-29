@@ -39,9 +39,9 @@
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
 
-            <h1 class="logo me-auto"><a href="{% url 'home' %}"><span>Pool</span>Masters</a></h1>
+            <h1 class="logo me-auto"><a href="{% url 'home' %}"><span>Pool</span>M</a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="{% url 'home' %}" class="logo me-auto me-lg-0"><img src="{% static '' %}/img/logo.png" alt="" class="img-fluid"></a>-->
+            <!-- <a href="{% url 'home' %}" class="logo me-auto me-lg-0"><img src="{% static '/img/logo.png' %}" alt="" class="img-fluid"></a> -->
 
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
@@ -50,9 +50,9 @@
                     <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="{% url 'about' %}">About Us</a></li>
-                            <li><a href="{% url 'about' %}">Team</a></li>
-                            <li><a href="{% url 'about' %}">Testimonials</a></li>
-                            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                            <li><a href="{% url 'about' %}">Why Choose us?</a></li>
+                            <li><a href="{% url 'testimony' %}">Testimonials</a></li>
+                            <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                                 <ul>
                                     <li><a href="#">Deep Drop Down 1</a></li>
                                     <li><a href="#">Deep Drop Down 2</a></li>
@@ -60,15 +60,15 @@
                                     <li><a href="#">Deep Drop Down 4</a></li>
                                     <li><a href="#">Deep Drop Down 5</a></li>
                                 </ul>
-                            </li>
+                            </li> -->
                         </ul>
                     </li>
 
-                    <li><a href="{% url 'about' %}">Services</a></li>
-                    <li><a href="{% url 'about' %}">Portfolio</a></li>
+                    <li><a href="{% url 'services' %}">Services</a></li>
+                    <li><a href="{% url 'portfolio' %}">Portfolio</a></li>
                     <li><a href="{% url 'about' %}">Pricing</a></li>
-                    <li><a href="{% url 'about' %}">Blog</a></li>
-                    <li><a href="{% url 'about' %}">Contact</a></li>
+                    <!-- <li><a href="{% url 'about' %}">Blog</a></li> -->
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
 
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
@@ -76,10 +76,10 @@
             <!-- .navbar -->
 
             <div class="header-social-links d-flex">
-                <a href="#" class="twitter"><i class="bu bi-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bu bi-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bu bi-instagram"></i></a>
-                <a href="#" class="linkedin"><i class="bu bi-linkedin"></i></i></a>
+                <a href="{% url 'contact' %}" class="twitter"><i class="bu bi-twitter"></i></a>
+                <a href="{% url 'contact' %}" class="facebook"><i class="bu bi-facebook"></i></a>
+                <a href="{% url 'contact' %}" class="instagram"><i class="bu bi-instagram"></i></a>
+                <a href="{% url 'contact' %}" class="linkedin"><i class="bu bi-linkedin"></i></i></a>
             </div>
 
         </div>
