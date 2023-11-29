@@ -1,1 +1,1 @@
-psycopg-binary
+pscopy2-binary

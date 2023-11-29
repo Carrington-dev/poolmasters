@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -46,7 +47,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['./applications/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -54,6 +55,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                "applications.users.context_processors.important"
             ],
         },
     },
@@ -117,3 +120,10 @@ DATABASES = {
         'NAME': BASE_DIR / 'applications/files/logs/db.sqlite3',
     }
 }
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "applications/files/media")
+STATIC_ROOT = os.path.join(BASE_DIR, "applications/files/static")
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'applications/files/assets'),
+]
