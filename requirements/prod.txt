@@ -1,1 +1,3 @@
+-r requirements/base.txt
+
 pscopy2-binary

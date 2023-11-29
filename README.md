@@ -93,7 +93,7 @@ set up permissions and roles on aws or use roles for the IAM user controlling th
 
 """ python3 -m venv environment_name """
 source  environment_name/bin/activate
-pip3 install -r requirements.txt
+pip3 install -r requirements/prod.txt
 ```
 
 
@@ -105,7 +105,7 @@ __It is always a good idea to separate required packages based on specific modes
 
 ```python
 
-django_proj/django_project/settings/dev.py
+django_proj/django_project/settings/local.py
 django_proj/django_project/settings/prod.py
 ```
 
@@ -127,9 +127,29 @@ sudo apt-get install nginx
 
 to setup nginx
 
-```bash
+```conf
+upstream vroomhive {
+    server unix:/run/gunicorn.sock;
+}
 
+server {
+    listen 80;
+    server_name 13.244.175.233 poolmasters.co.za www.poolmasters.co.za;
+    client_max_body_size 100M;
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root /var/www;
+    }
 
+    location / {
+        include proxy_params;
+        proxy_pass http://vroomhive;
+    }
+
+    location /media/ {
+        root /var/www;
+    }
+}
 ```
 content of the file
 
@@ -167,5 +187,7 @@ After=network.target
 
 
 
-### How to build a buildspec File
-### How to build a AppSpec File
+<!-- ### How to build a buildspec File
+
+
+### How to build a AppSpec File -->
