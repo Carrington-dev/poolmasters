@@ -30,6 +30,10 @@
     <!-- Template Main CSS File -->
     <link href="{% static '/css/style.css' %}" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
+
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
 
 </head>
 
@@ -39,8 +43,9 @@
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
 
-            <h1 class="logo me-auto"><a href="{% url 'home' %}"><span>Pool</span>M</a></h1>
+            <!-- <h1 class="logo me-auto"><a href="{% url 'home' %}"><span>Pool</span>M</a></h1> -->
             <!-- Uncomment below if you prefer to use an image logo -->
+            <a href="{% url 'home' %}" class="logo me-auto "><img src="{% static '/img/logo.png' %}" alt="" class="img-fluid"></a>
             <!-- <a href="{% url 'home' %}" class="logo me-auto me-lg-0"><img src="{% static '/img/logo.png' %}" alt="" class="img-fluid"></a> -->
 
             <nav id="navbar" class="navbar order-last order-lg-0">
@@ -132,8 +137,11 @@
 
                     <div class="col-lg-4 col-md-6 footer-newsletter">
                         <h4>Join Our Newsletter</h4>
-                        <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-                        <form action="" method="post">
+                        <p>We offer free pool inspections and update every now and then, so contact us today to schedule an appointment!
+
+                        </p>
+                        <form action="{% url 'subscribe' %}" method="post">
+                            {% csrf_token %}
                             <input type="email" name="email"><input type="submit" value="Subscribe">
                         </form>
                     </div>
@@ -176,6 +184,112 @@
 
     <!-- Template Main JS File -->
     <script src="{% static '/js/main.js' %}"></script>
+    <!--  -->
+    <!-- JavaScript -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!--  -->
+    {% block jstags %}
+    <!--  -->
+    {% endblock jstags %}
+
+
+    <!--  -->
+    {% if messages %}
+    <!--  -->
+    {% for message in messages%}
+    <script>
+        var tags = `{{ message.tags}}`;
+
+        // alert(`{% for message in messages%}{{message}}{% endfor %}`);
+        if (tags == 'alert-danger') {
+
+            new Notify({
+                status: 'error',
+                title: 'New message',
+                text: '{{message}}',
+                effect: 'fade',
+                speed: 300,
+                customClass: '',
+                customIcon: '',
+                showIcon: true,
+                showCloseButton: true,
+                autoclose: false,
+                autotimeout: 3000,
+                gap: 20,
+                distance: 20,
+                type: 1,
+                position: 'right top',
+                customWrapper: '',
+            })
+        }
+        if (tags == 'alert-warning') {
+
+            new Notify({
+                status: 'warning',
+                title: 'New message',
+                text: '{{message}}',
+                effect: 'fade',
+                speed: 300,
+                customClass: '',
+                customIcon: '',
+                showIcon: true,
+                showCloseButton: true,
+                autoclose: false,
+                autotimeout: 3000,
+                gap: 20,
+                distance: 20,
+                type: 1,
+                position: 'right top',
+                customWrapper: '',
+            })
+        }
+        if (tags == 'alert-success') {
+
+            new Notify({
+                status: 'success',
+                title: 'New message',
+                text: '{{message}}',
+                effect: 'fade',
+                speed: 300,
+                customClass: '',
+                customIcon: '',
+                showIcon: true,
+                showCloseButton: true,
+                autoclose: false,
+                autotimeout: 3000,
+                gap: 20,
+                distance: 20,
+                type: 1,
+                position: 'right top',
+                customWrapper: '',
+            })
+        }
+        if (tags == 'alert-info') {
+
+            new Notify({
+                status: 'info',
+                title: 'New message',
+                text: '{{message}}',
+                effect: 'fade',
+                speed: 300,
+                customClass: '',
+                customIcon: '',
+                showIcon: true,
+                showCloseButton: true,
+                autoclose: false,
+                autotimeout: 3000,
+                gap: 20,
+                distance: 20,
+                type: 1,
+                position: 'right top',
+                customWrapper: '',
+            })
+        }
+    </script>
+    {% endfor %}
+    <!--  -->
+    {% endif %}
 
 </body>
 

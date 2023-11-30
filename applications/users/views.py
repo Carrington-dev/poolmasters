@@ -16,9 +16,9 @@ def portfolio(request):
     context = dict()
     return render(request, "basic/portfolio.html", context)
 
-def contact(request):
-    context = dict()
-    return render(request, "basic/contact.html", context)
+# def contact(request):
+#     context = dict()
+#     return render(request, "basic/contact.html", context)
 
 def testimony(request):
     context = dict()

@@ -1,3 +1,4 @@
 senv
 __pycache__
 media
+.env
