@@ -139,19 +139,15 @@ MESSAGE_TAGS = {
     # messages.ERROR: 'danger',
 }
 
-# EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = os.environ.get('EMAIL_HOST')
-# EMAIL_PORT = os.environ.get('EMAIL_PORT')
-# EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-# EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS')
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_PORT = os.environ.get('EMAIL_PORT')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS')
 # DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
-# DEFAULT_FROM_ADMIN = os.environ.get('DEFAULT_FROM_ADMIN')
+DEFAULT_FROM_ADMIN = os.environ.get('DEFAULT_FROM_ADMIN')
 
 
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'SMTP_Injection'
-EMAIL_HOST_PASSWORD = 'febde2f51f6e9ea454f67766425b8cd313a4d763'
-EMAIL_USE_TLS = True
+
 DEFAULT_FROM_EMAIL = 'Carrington Visionary Academy <support@mail.cvacademy.co.za>'
-DEFAULT_FROM_ADMIN = 'crn96m@gmail.com'
