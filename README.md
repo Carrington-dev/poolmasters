@@ -126,7 +126,10 @@ sudo apt-get install nginx
 #### Setup nginx
 
 to setup nginx
-
+```bash
+sudo nano /etc/nginx/sites-available/myproject.conf
+```
+__content of the file__
 ```conf
 upstream vroomhive {
     server unix:/run/gunicorn.sock;
@@ -151,7 +154,27 @@ server {
     }
 }
 ```
-content of the file
+__next command to connect files__
+
+```bash
+sudo ln -s /etc/nginx/sites-available/myproject /etc/nginx/sites-enabled
+```
+__next command to see nginx status__
+
+```bash
+sudo nginx -t
+```
+__next command to restart nginx__
+
+```bash
+sudo systemctl restart nginx
+```
+__next command to delete port 8000__
+
+```bash
+sudo ufw delete allow 8000
+sudo ufw allow 'Nginx Full'
+```
 
 ### How to configure gunicorn
 
@@ -185,6 +208,17 @@ Requires=gunicorn.socket
 After=network.target
 ```
 
+```bash
+sudo systemctl start gunicorn.socket
+sudo systemctl enable gunicorn.socket
+```
+
+__to reload__
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart gunicorn
+```
 
 
 <!-- ### How to build a buildspec File -->
