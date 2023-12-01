@@ -1,3 +1,4 @@
 -r requirements/base.txt
 
-pscopy2-binary
+psycopg2-binary
+gunicorn

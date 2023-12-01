@@ -7,10 +7,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY = 'ftUpUlNEc3CeBJ5mo6k7tViiEH4JRPLVXheEhRuG4eiRWkwx9Zsiyw4Vel4xY2ix'
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
-APPS_DIR = BASE_DIR / "vroomtradex"
+APPS_DIR = BASE_DIR / "applications"
 
 
 THIRD_PARTY = [
@@ -91,8 +91,8 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static/'
-MEDIA_URL = 'media/'
+STATIC_URL = 'static_pools/'
+MEDIA_URL = 'media_pools/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -151,3 +151,5 @@ DEFAULT_FROM_ADMIN = os.environ.get('DEFAULT_FROM_ADMIN')
 
 
 DEFAULT_FROM_EMAIL = 'Carrington Visionary Academy <support@mail.cvacademy.co.za>'
+
+

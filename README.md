@@ -131,25 +131,25 @@ sudo nano /etc/nginx/sites-available/myproject.conf
 ```
 __content of the file__
 ```conf
-upstream vroomhive {
-    server unix:/run/gunicorn.sock;
+upstream poolmasters {
+    server unix:/run/punicorn.sock;
 }
 
 server {
     listen 80;
-    server_name 13.244.175.233 poolmasters.co.za www.poolmasters.co.za;
+    server_name 13.247.11.53 poolmasters.co.za www.poolmasters.co.za;
     client_max_body_size 100M;
     location = /favicon.ico { access_log off; log_not_found off; }
-    location /static/ {
+    location /static_pools/ {
         root /var/www;
     }
 
     location / {
         include proxy_params;
-        proxy_pass http://vroomhive;
+        proxy_pass http://poolmasters;
     }
 
-    location /media/ {
+    location /media_pools/ {
         root /var/www;
     }
 }
@@ -157,7 +157,7 @@ server {
 __next command to connect files__
 
 ```bash
-sudo ln -s /etc/nginx/sites-available/myproject /etc/nginx/sites-enabled
+sudo ln -s /etc/nginx/sites-available/pools /etc/nginx/sites-enabled
 ```
 __next command to see nginx status__
 
@@ -179,16 +179,16 @@ sudo ufw allow 'Nginx Full'
 ### How to configure gunicorn
 
 ```
-sudo nano /etc/systemd/system/gunicorn.socket
+sudo nano /etc/systemd/system/punicorn.socket
 ```
 
 Content of the file above
 ```
 [Unit]
-Description=gunicorn socket
+Description=punicorn socket
 
 [Socket]
-ListenStream=/run/gunicorn.sock
+ListenStream=/run/punicorn.sock
 
 [Install]
 WantedBy=sockets.target
@@ -197,32 +197,101 @@ WantedBy=sockets.target
 Now we will add the new file for Gunicorn
 
 ```
-sudo nano /etc/systemd/system/gunicorn.service
+sudo nano /etc/systemd/system/punicorn.service
 ```
 
 Content of the file above
 ```
 [Unit]
-Description=gunicorn daemon
-Requires=gunicorn.socket
+Description=punicorn daemon
+Requires=punicorn.socket
 After=network.target
 ```
 
 ```bash
-sudo systemctl start gunicorn.socket
-sudo systemctl enable gunicorn.socket
+sudo systemctl start punicorn.socket
+sudo systemctl enable punicorn.socket
 ```
 
 __to reload__
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl restart gunicorn
+sudo systemctl restart punicorn
+```
+
+```
+sudo nano /etc/systemd/system/punicorn.service
+```
+
+```
+[Unit]
+Description=punicorn daemon
+Requires=punicorn.socket
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/poolmasters
+ExecStart=/home/ubuntu/stem_settings/penv/bin/gunicorn \
+          --access-logfile - \
+          --workers 3 \
+          --bind unix:/run/punicorn.sock \
+          config.wsgi:application
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
 ```
 
 
-<!-- ### How to build a buildspec File -->
+### How to generate an SSL Certificate
 
+1. Update the package repository with the command:
+```bash
+apt-get update
+```
+2. Install Certbot using the following command:
+
+```bash
+sudo apt-get install certbot
+```
+3. Install the Certbot plugin for NGINX with Python 3:
+
+```bash
+apt-get install python3-certbot-nginx
+```
+
+4. generating an ssl certificate for nginx using certbot
+
+
+```bash
+sudo certbot certonly --manual -d poolmasters.co.za -d www.poolmasters.co.za
+sudo certbot --nginx -d poolmasters.co.za -d www.poolmasters.co.za
+```
+
+5. renewing an ssl
+
+```bash
+sudo certbot renew --dry-run
+```
+
+<!-- ### How to build a buildspec File -->
+The option you're looking for is -R.
+```
+cp -R path_to_source path_to_destination/
+```
+
+If destination doesn't exist, it will be created.
+-R means copy directories recursively. You can also use -r since it's case-insensitive.
+To copy everything inside the source folder (symlinks, hidden files) without copying the source folder itself use -a flag along with trailing /. in the source (as per @muni764's / @Anton Krug's comment):
+
+```
+cp -a path_to_source/. path_to_destination/
+
+```
 
 <!-- ### How to build a AppSpec File -->
 

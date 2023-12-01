@@ -210,3 +210,5 @@ SPECTACULAR_SETTINGS["SERVERS"] = [  # noqa: F405
 ]
 # Your stuff...
 # ------------------------------------------------------------------------------
+MEDIA_ROOT = "/var/www/media_pools"
+STATIC_ROOT = "/var/www/static_pools"
