@@ -25,6 +25,10 @@ DEFAULT_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+     'django.contrib.sites',
+    'django.contrib.sitemaps',
+
 ]
 
 CUSTOM_APPS = [
@@ -149,5 +153,5 @@ EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS')
 DEFAULT_FROM_ADMIN = os.environ.get('DEFAULT_FROM_ADMIN')
 
 
-
+SITE_ID  = 1
 DEFAULT_FROM_EMAIL = 'Carrington Visionary Academy <support@mail.cvacademy.co.za>'

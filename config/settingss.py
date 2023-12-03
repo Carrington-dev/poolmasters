@@ -10,6 +10,9 @@ ALLOWED_HOSTS = []
 
 THIRD_PARTY = [
     'grappelli',
+   
+
+    
 ]
 
 DEFAULT_APPS = [
@@ -23,6 +26,9 @@ DEFAULT_APPS = [
 ]
 
 CUSTOM_APPS = [
+
+   
+
     'applications.users',
     'applications.book',
 ]
