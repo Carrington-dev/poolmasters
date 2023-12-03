@@ -151,5 +151,3 @@ DEFAULT_FROM_ADMIN = os.environ.get('DEFAULT_FROM_ADMIN')
 
 
 DEFAULT_FROM_EMAIL = 'Carrington Visionary Academy <support@mail.cvacademy.co.za>'
-
-

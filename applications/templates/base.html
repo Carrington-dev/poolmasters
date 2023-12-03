@@ -5,8 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>{{ title }}</title>
+    <!--  -->
+    {% if title %}
+    <!--  -->
+    <title>{{ title }} | {{ company }}</title>
+    {% else %}
+    <title>{{ company }}</title>
+    {% endif %}
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -81,10 +86,10 @@
             <!-- .navbar -->
 
             <div class="header-social-links d-flex">
-                <a href="{% url 'contact' %}" class="twitter"><i class="bu bi-twitter"></i></a>
-                <a href="{% url 'contact' %}" class="facebook"><i class="bu bi-facebook"></i></a>
-                <a href="{% url 'contact' %}" class="instagram"><i class="bu bi-instagram"></i></a>
-                <a href="{% url 'contact' %}" class="linkedin"><i class="bu bi-linkedin"></i></i></a>
+                <a href="https://facebook.com/poolmasters.za" class="twitter"><i class="bu bi-twitter"></i></a>
+                <a href="https://facebook.com/poolmasters.za" class="facebook"><i class="bu bi-facebook"></i></a>
+                <a href="https://facebook.com/poolmasters.za" class="instagram"><i class="bu bi-instagram"></i></a>
+                <a href="https://facebook.com/poolmasters.za" class="linkedin"><i class="bu bi-linkedin"></i></i></a>
             </div>
 
         </div>
@@ -107,7 +112,7 @@
                     <div class="col-lg-3 col-md-6 footer-contact">
                         <h3>{{ company }}</h3>
                         <p>
-                            395 Francis Baard Street <br> Pretoria, GP 0001<br> South Africa <br><br>
+                            395 Francis Baard Street <br> Pretoria, Gauteng 0001<br> South Africa <br><br>
                             <strong>Phone:</strong> {{ tel1 }}<br>
                             <strong>Email:</strong> {{ email }}<br>
                         </p>
@@ -116,22 +121,22 @@
                     <div class="col-lg-2 col-md-6 footer-links">
                         <h4>Useful Links</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'home' %}">Home</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'about' %}">About us</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'services' %}">Services</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'services' %}">Terms of service</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'services' %}">Privacy policy</a></li>
                         </ul>
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-links">
                         <h4>Our Services</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'services' %}">Pool Design</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'services' %}">Pool Cleaning</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'services' %}">Pool Matainence</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'services' %}">Pool Construction</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'services' %}">Pool Inspections</a></li>
                         </ul>
                     </div>
 

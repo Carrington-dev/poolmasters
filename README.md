@@ -293,6 +293,11 @@ cp -a path_to_source/. path_to_destination/
 
 ```
 
+```
+nginx -t && nginx -s reload
+```
+
+
 <!-- ### How to build a AppSpec File -->
 
 <!-- https://www.blsoutdoorliving.com/about-us/ -->
