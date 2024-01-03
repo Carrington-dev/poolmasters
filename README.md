@@ -1,8 +1,8 @@
-# PoolMasters
+# ElectroMasters
 
 ### Introduction
 
-This is PoolMasters, an online pool-maintainance company which is highly avalable. it provides all logos, fliers, images design etc needed to run a business. The client has paid for the website but it's in great shape. We are planning to intergrate  CI/CD in this platform on any cloud platform, emails with this platform so that it can be a fully functional business. This website contains email marketing in small portions which actual need s revision to cater for the new model updates
+This is ElectroMasters an online pool-maintainance company which is highly avalable. it provides all logos, fliers, images design etc needed to run a business. The client has paid for the website but it's in great shape. We are planning to intergrate  CI/CD in this platform on any cloud platform, emails with this platform so that it can be a fully functional business. This website contains email marketing in small portions which actual need s revision to cater for the new model updates
 
 __To scale this website we will use autoscaling on AWS and an Elastic Load Balancer to distribute and channel traffic to the right instances__
 
