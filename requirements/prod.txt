@@ -1,4 +1,4 @@
--r requirements/base.txt
+-r base.txt
 
 psycopg2-binary
 gunicorn
