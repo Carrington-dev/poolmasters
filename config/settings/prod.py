@@ -28,5 +28,5 @@ LOGGING = {
 }
 
 DEBUG = False
-MEDIA_ROOT = "/var/www/media_pools"
-STATIC_ROOT = "/var/www/static_pools"
+MEDIA_ROOT = "/var/www/media"
+STATIC_ROOT = "/var/www/static"
